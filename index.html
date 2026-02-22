@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Avesta Tech | Mobil Uygulamalar & Dijital Ürünler</title>
+  <meta name="description" content="Avesta Tech, mobil uygulamalar ve dijital ürünler geliştiren bağımsız bir geliştirici markasıdır. Kurucu: Medet Deniz." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Avesta Tech" />
+  <meta property="og:description" content="Mobil uygulamalar & dijital ürünler. Kurucu: Medet Deniz." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/logo.png" />
+
+  <link rel="icon" href="/favicon.png" />
+
+  <style>
+    :root{
+      --bg0:#07111a;
+      --bg1:#0b1a28;
+      --card:#0f2336;
+      --stroke:rgba(255,255,255,.08);
+      --text:#eaf0f7;
+      --muted:#a7b5c4;
+      --accent:#ff7a00;
+      --accent2:#ffb100;
+      --shadow:0 16px 40px rgba(0,0,0,.35);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 15% 10%, rgba(255,122,0,.18), transparent 55%),
+        radial-gradient(900px 600px at 80% 20%, rgba(255,177,0,.12), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1) 45%, #061018);
+      overflow-x:hidden;
+    }
+    a{color:inherit}
+    .container{max-width:1140px;margin:0 auto;padding:24px}
+
+    /* Topbar */
+    .topbar{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:saturate(160%) blur(10px);
+      background:rgba(7,17,26,.55);
+      border-bottom:1px solid var(--stroke);
+    }
+    .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px;max-width:1140px;margin:0 auto}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .brand img{width:42px;height:42px;border-radius:12px;background:#fff;box-shadow:0 8px 18px rgba(0,0,0,.25)}
+    .brand .name{font-weight:900;letter-spacing:.08em}
+    .brand .tag{font-size:12px;color:var(--muted);margin-top:2px}
+
+    nav{display:flex;gap:14px;flex-wrap:wrap}
+    nav a{font-size:13px;color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:12px;border:1px solid transparent}
+    nav a:hover{color:var(--text);border-color:var(--stroke);background:rgba(255,255,255,.03)}
+
+    /* Hero */
+    .hero{padding:52px 0 18px}
+    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:stretch}
+    .kicker{display:inline-flex;gap:10px;align-items:center;color:var(--muted);font-size:13px}
+    .dot{width:8px;height:8px;border-radius:99px;background:var(--accent);box-shadow:0 0 0 6px rgba(255,122,0,.14)}
+    h1{font-size:52px;line-height:1.05;margin:14px 0 12px}
+    .lead{font-size:18px;line-height:1.7;color:var(--muted);margin:0}
+
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      text-decoration:none;
+      padding:12px 16px;border-radius:16px;font-weight:800;
+      border:1px solid var(--stroke);
+      background:rgba(255,255,255,.03);
+      color:var(--text);
+      box-shadow:0 10px 22px rgba(0,0,0,.18);
+    }
+    .btn.primary{background:linear-gradient(135deg,var(--accent), var(--accent2));color:#121212;border:none}
+    .btn:hover{transform:translateY(-1px)}
+
+    .card{background:rgba(15,35,54,.92);border:1px solid var(--stroke);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .hero-card{padding:18px 18px 14px;display:flex;flex-direction:column;gap:12px;min-height:100%}
+    .hero-card .mini{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .pill{font-size:12px;color:#111;background:linear-gradient(135deg,var(--accent),var(--accent2));padding:6px 10px;border-radius:999px;font-weight:900}
+    .hero-card h2{margin:2px 0 0;font-size:18px}
+    .hero-card p{margin:0;color:var(--muted);line-height:1.7}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:6px}
+    .stat{background:rgba(255,255,255,.03);border:1px solid var(--stroke);border-radius:16px;padding:12px}
+    .stat .n{font-weight:900;font-size:16px}
+    .stat .l{color:var(--muted);font-size:12px;margin-top:4px}
+
+    /* Sections */
+    section{margin-top:28px}
+    .section-title{display:flex;align-items:flex-end;justify-content:space-between;gap:14px}
+    .section-title h2{margin:0;font-size:22px}
+    .section-title p{margin:0;color:var(--muted);font-size:13px;max-width:580px;line-height:1.6}
+
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+    .tile{padding:18px;border-radius:20px;background:rgba(255,255,255,.03);border:1px solid var(--stroke)}
+    .tile h3{margin:0 0 8px;font-size:16px}
+    .tile p{margin:0;color:var(--muted);line-height:1.7}
+
+    .products{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;margin-top:14px}
+    .product-card{padding:18px}
+    .product-card .top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .product-card .title{display:flex;flex-direction:column;gap:2px}
+    .product-card h3{margin:0;font-size:18px}
+    .product-card .sub{color:var(--muted);font-size:13px}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .badge{font-size:12px;color:var(--muted);border:1px solid var(--stroke);padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.02)}
+
+    .founder{padding:18px;display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:center}
+    .founder .who{padding:16px;border-radius:18px;background:rgba(255,255,255,.03);border:1px solid var(--stroke)}
+    .founder .who h3{margin:0 0 6px}
+    .founder .who p{margin:0;color:var(--muted);line-height:1.7}
+
+    .contact{padding:18px}
+    .contact a{color:var(--accent);text-decoration:none;font-weight:900}
+
+    .legal{padding:18px}
+    .legal p{color:var(--muted);line-height:1.75;margin:0}
+    .legal .small{margin-top:12px;font-size:12px;color:var(--muted)}
+
+    footer{margin-top:36px;padding:18px 0 40px;color:var(--muted);border-top:1px solid var(--stroke)}
+    footer .f{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+    /* Responsive */
+    @media(max-width:960px){
+      .hero-grid{grid-template-columns:1fr}
+      h1{font-size:40px}
+      .products{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      .founder{grid-template-columns:1fr}
+      nav{display:none}
+    }
+
+    @media(prefers-reduced-motion:no-preference){
+      .btn{transition:transform .15s ease, filter .15s ease}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top" aria-label="Avesta Tech">
+        <!-- Bu dosyanın yanına logo.png koy: senin attığın Avesta Tech logosu -->
+        <img src="logo.png" alt="Avesta Tech Logo" />
+        <div>
+          <div class="name">AVESTA TECH</div>
+          <div class="tag">Mobil uygulamalar • Dijital ürünler</div>
+        </div>
+      </a>
+      <nav aria-label="Menü">
+        <a href="#products">Ürünler</a>
+        <a href="#values">Yaklaşım</a>
+        <a href="#founder">Kurucu</a>
+        <a href="#contact">İletişim</a>
+        <a href="#privacy">Gizlilik</a>
+      </nav>
+    </div>
+  </div>
+
+  <main id="top" class="container">
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="kicker"><span class="dot"></span> Bağımsız geliştirici markası</div>
+          <h1>Basit, güvenilir
+            <span style="color:var(--accent)">mobil ürünler</span>
+          </h1>
+          <p class="lead">Avesta Tech; kullanıcı deneyimini merkeze alan, sade ve güvenilir mobil uygulamalar geliştiren bağımsız bir geliştirici markasıdır.</p>
+
+          <div class="cta">
+            <a class="btn primary" href="#products">Ürünleri Gör</a>
+            <a class="btn" href="#contact">E‑posta ile ulaş</a>
+          </div>
+        </div>
+
+        <div class="card hero-card">
+          <div class="mini">
+            <div>
+              <div style="color:var(--muted);font-size:12px">Kısa Özet</div>
+              <h2>Net hedef: kullanıcıya değer</h2>
+            </div>
+            <div class="pill">AVESTA</div>
+          </div>
+          <p>İşin özünde, ürünlerimizin sade ve anlaşılır olmasını; verilerin ise mümkün olduğunca cihazda kalmasını hedefliyoruz.</p>
+
+          <div class="stats">
+            <div class="stat"><div class="n">UX</div><div class="l">Sadelik odaklı</div></div>
+            <div class="stat"><div class="n">Gizlilik</div><div class="l">Şeffaf yaklaşım</div></div>
+            <div class="stat"><div class="n">Hız</div><div class="l">Akıcı deneyim</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="products">
+      <div class="section-title">
+        <h2>Ürünler</h2>
+        <p>Avesta Tech altında yayınlanan uygulamalar ve geliştirme aşamasındaki dijital ürünler.</p>
+      </div>
+
+      <div class="products">
+        <div class="card product-card">
+          <div class="top">
+            <div class="title">
+              <h3>Bizden Hatıra</h3>
+              <div class="sub">Anılarınızı düzenleyin, saklayın ve tekrar tekrar hatırlayın.</div>
+            </div>
+            <div class="pill">Android</div>
+          </div>
+          <div class="badges">
+            <div class="badge">Fotoğraf + not</div>
+            <div class="badge">Basit arayüz</div>
+            <div class="badge">Yerel depolama</div>
+            <div class="badge">Reklam destekli</div>
+          </div>
+          <p style="margin-top:12px;color:var(--muted);line-height:1.7">Uygulama sayfası için Play Store linkini hazır olduğunda buraya ekleyebilirsin.</p>
+          <a class="btn" style="margin-top:12px" href="#contact">Link istemek / destek</a>
+        </div>
+
+        <div class="card product-card">
+          <div class="top">
+            <div class="title">
+              <h3>Yakında</h3>
+              <div class="sub">Yeni mobil ürünler üzerinde çalışıyoruz.</div>
+            </div>
+            <div class="pill">Roadmap</div>
+          </div>
+          <p style="margin-top:12px;color:var(--muted);line-height:1.7">Avesta Tech altında farklı kategorilerde yeni uygulamalar yayınlanacaktır.</p>
+          <div class="badges">
+            <div class="badge">Notlar</div>
+            <div class="badge">Araçlar</div>
+            <div class="badge">Üretkenlik</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="values">
+      <div class="section-title">
+        <h2>Yaklaşım</h2>
+        <p>Ürünlerimizi geliştirirken benimsediğimiz temel prensipler.</p>
+      </div>
+      <div class="grid">
+        <div class="tile">
+          <h3>Sadelik</h3>
+          <p>Gereksiz karmaşayı azaltır, kullanıcıya net bir akış sunarız.</p>
+        </div>
+        <div class="tile">
+          <h3>Gizlilik</h3>
+          <p>Mümkün olduğunda veriyi cihazda tutar, şeffaf şekilde bilgilendiririz.</p>
+        </div>
+        <div class="tile">
+          <h3>Sürdürülebilirlik</h3>
+          <p>Uzun ömürlü, bakım yapılabilir ve ölçeklenebilir ürünler hedefleriz.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="founder" class="card founder">
+      <div class="who">
+        <h3>Kurucu</h3>
+        <p><strong>Medet Deniz</strong><br/>Avesta Tech'in kurucusu ve geliştiricisidir.</p>
+      </div>
+      <div class="who">
+        <h3>Vizyon</h3>
+        <p>Kullanıcıların günlük hayatında gerçekten işe yarayan, güvenilir ve sade ürünler üretmek.</p>
+      </div>
+    </section>
+
+    <section id="contact" class="card contact">
+      <div class="section-title" style="margin-bottom:12px">
+        <h2>İletişim</h2>
+        <p>Destek, iş birliği veya geri bildirim için e‑posta ile ulaşabilirsin.</p>
+      </div>
+      <p>E‑posta: <a href="mailto:kalptenyazilim@gmail.com">kalptenyazilim@gmail.com</a></p>
+      <p style="margin:8px 0 0;color:var(--muted);font-size:13px"></p>
+    </section>
+
+    <section id="privacy" class="card legal">
+      <div class="section-title" style="margin-bottom:12px">
+        <h2>Gizlilik Politikası</h2>
+        <p>Şeffaflık ilkemiz gereği, veri işleme süreçlerini açıkça paylaşıyoruz.</p>
+      </div>
+      <p><strong>Özet:</strong> Avesta Tech, kullanıcı verilerini minimumda tutmayı hedefler. Uygulamalarımız, temel işlevler için gerekli izinleri isteyebilir. Reklam gösterimi varsa (ör. AdMob), üçüncü taraf sağlayıcılar kendi politikaları kapsamında bazı cihaz tanımlayıcılarını kullanabilir.</p>
+      <p style="margin-top:12px"><strong>Toplanan veriler:</strong> Uygulamaya göre; cihaz üzerinde yerel olarak tutulan içerik (ör. fotoğraf/not) ve anonim performans/hata bilgileri. Sunucuya zorunlu olmayan veri gönderimi yapılmaz.</p>
+      <p style="margin-top:12px"><strong>İletişim:</strong> Gizlilik ile ilgili sorular için <a href="mailto:kalptenyazilim@gmail.com">kalptenyazilim@gmail.com</a></p>
+      <div class="small">Not: Uygulama bazında daha detaylı politika metni istersen ayrı bir /privacy sayfası da hazırlayabiliriz.</div>
+    </section>
+
+    <footer>
+      <div class="f">
+        <div>© <span id="y"></span> Avesta Tech</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a href="#contact" style="text-decoration:none;color:var(--muted)">İletişim</a>
+          <a href="#privacy" style="text-decoration:none;color:var(--muted)">Gizlilik</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
